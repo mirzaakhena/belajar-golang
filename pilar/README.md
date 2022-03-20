@@ -1,20 +1,31 @@
-# Pilar Framework
+# Pilar Framework and gogen tools
+
+## PILAR (Progressive, Intuitive Layered Architecture)
+
+### Based on Clean Architecture and Domain Driven Design
+
+## GOGEN Helper tools to generate PILAR Framework
 
 ## usecase
 
 ### inport
 
-#### inport request
+- inport request
 
-#### inport response
+- inport response
 
 ### interactor
 
-#### implement inport interface
+- implement inport interface
+
+- only has one Outport
+
+* can have many interactor as algorithm alternative
 
 ### outport
 
-#### interface composition
+- use interface composition
+- compose repository and service
 
 ---
 
@@ -38,7 +49,7 @@
 
 ### implement outport interface
 
-### struct composition
+### use struct composition
 
 ### panic in contructor
 
@@ -56,6 +67,10 @@
 
 ## application
 
-### register controller, usecase and gateway
+### binding controller, usecase and gateway
 
 ---
+
+## shared model
+
+## shared infrastructure
