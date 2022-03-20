@@ -1,1 +1,61 @@
-![Pilar Framework](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mirzaakhena/rest-messaging-db/pilar/pilar.wsd)
+# Pilar Framework
+
+## usecase
+
+### inport
+
+#### inport request
+
+#### inport response
+
+### interactor
+
+#### implement inport interface
+
+### outport
+
+#### interface composition
+
+---
+
+## model
+
+### entity
+
+### value object
+
+### service
+
+### repository
+
+### enum
+
+### errorenum
+
+---
+
+## gateway
+
+### implement outport interface
+
+### struct composition
+
+### panic in contructor
+
+---
+
+## controller
+
+### handler
+
+### interceptor
+
+### router
+
+---
+
+## application
+
+### register controller, usecase and gateway
+
+---
