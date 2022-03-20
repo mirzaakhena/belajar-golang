@@ -81,7 +81,7 @@ x := fmt.Sprintf("%10.2f", 3.1428573242424223562)
 fmt.Printf("%s\n", x)
 ```
 
-## Data type, variable, constant, value assignment, assertion, and casting
+## Data type, variable, constant, value assignment
 
 ```
 int, string, float64, bool, []byte, func, struct, interface
@@ -151,8 +151,8 @@ for k, v := range x {
 ```
 
 ```
-break for exit from loop
-continue to ignore the next statement but continue the loop
+use break to exit from loop
+use continue to ignore the next statement but still continue the loop
 ```
 
 ## Conditional
@@ -268,28 +268,7 @@ _, _ := Something(23)
 
 ```
 
-Variadic function
-
-```
-func Something(x... int)  {
-
-}
-```
-
-Closure
-
-```
-
-func Something(a func())  {
-  a()
-}
-
-func Something() func()  {
-  return func() {}
-}
-```
-
-# struct
+## struct
 
 ```
 type Something struct {
@@ -299,7 +278,7 @@ type Something struct {
 
 ```
 
-# method
+## method
 
 ```
 type Something struct {
@@ -312,7 +291,7 @@ func (x *Something) Hello() {
 
 ```
 
-# interface
+## interface
 
 ```
 type Something interface {
@@ -320,7 +299,9 @@ type Something interface {
 }
 ```
 
-# composition
+## composition
+
+struct
 
 ```
 type Onething struct {
@@ -331,7 +312,11 @@ type Something struct {
   Onething
 }
 
+```
 
+interface
+
+```
 type Onething interface {
   DoSomething()
 }
@@ -340,19 +325,20 @@ type Something interface {
   Onething
 }
 
-
-
-```
-
-# package
+x := Something{}
+x.DoSomething()
 
 ```
-code layout and structure
+
+## package
+
+```
+code layout organization and structure
 public
 private
 ```
 
-# pointer
+## pointer
 
 ```
 var x int = 10
@@ -362,14 +348,14 @@ fmt.Printf("%v", *p)
 
 ```
 
-# go routine and channel
+## go routine and channel
 
 ```
 go func() {}
 
 ```
 
-# other thing
+## other thing
 
 ```
 interface{}
@@ -377,9 +363,38 @@ create your own type
 casting
 sorting
 assertions
+defer
+panic
+closure callback and return func
 
 out of memory
 accessing wrong data type
 accessing index out of bound
+anonymous function
 
+```
+
+## Variadic function
+
+```
+func Something(x... int)  {
+
+}
+
+Something(1, 3, 5, 7, 8)
+
+```
+
+## Closure
+
+```
+// callback
+func Something(a func())  {
+  a()
+}
+
+//
+func Something() func()  {
+  return func() {}
+}
 ```
