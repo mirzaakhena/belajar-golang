@@ -1,0 +1,108 @@
+@startuml How PILAR Architecture work
+
+hide footbox
+autonumber
+
+participant Controller #88E9AD
+
+box "Usecase" #LightCyan
+
+participant Inport as "Inport" <<Interface>> #DD7A7A 
+participant Interactor as "Interactor" #DD7A7A
+participant Outport as "Outport" <<Interface>> #DD7A7A
+
+end box
+
+participant Model1 as "Entity\nValueObject\nEnum"
+
+participant Model2 as "Repository\nService"
+
+participant Gateway as "Gateway" #88E9AD
+
+Outport -->> Model2: Extends Repository or Service
+
+note over Outport
+Outport is using
+<b>Interface Composition</b>
+to extends the repository and service
+end note
+
+Controller -> Inport: Controller execute Inport
+
+note right
+All required payload to run the usecase 
+is defined in <b>InportRequest</b>
+end note
+
+Inport -> Interactor ++: Inport implemented by Interactor
+
+note left
+Controller can be
+* rest api
+* grpc
+* consumer of message broker
+* command prompt
+end note
+
+Interactor -> Model1: Use entity, valueobject or enum \nto perform the logic
+
+note left
+Interactor is the place of usecase implementation
+
+It use entity, valueobject, enum, service and repository
+to perform the logic, sequence, and algorithm
+end note
+
+note right
+* Construct the new object
+* Calculate some value
+* Validate value
+* Change object state
+end note
+
+Model1 --> Interactor:
+
+Interactor -> Outport: Interactor call Outport
+
+note right
+Outport provide any required data or action 
+that needed by Interactor to run the usecase
+end note
+
+Outport -> Gateway: Outport implemented by Gateway
+
+note left Gateway
+Gateway is using
+<b>Struct Composition</b>
+to grouping the repository and service implementation
+end note
+
+Gateway -> Gateway : Do Process
+
+note left
+repository implementation usually has connection to persistent storage to perform :
+* storing the object
+* finding an object (or list of object) with some criteria
+* updating or deleting the object
+
+service implementation usually do some action like :
+* publishing event to message queue
+* generate some value for id creation with some algorithm
+* post or get some data to or from cloud service or cache
+* create or validate a token
+end note
+
+Gateway --> Outport :
+Outport --> Interactor :
+
+Interactor --> Inport --: 
+
+Inport --> Controller :
+
+note right
+All information that need to be returned
+is defined in <b>InportResponse</b>
+end note
+
+
+@enduml
